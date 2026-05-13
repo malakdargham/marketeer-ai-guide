@@ -1,26 +1,50 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Nav } from "@/components/site/Nav";
+import { Hero } from "@/components/site/Hero";
+import { Matrix } from "@/components/site/Matrix";
+import { DecisionTree } from "@/components/site/DecisionTree";
+import { Kpis } from "@/components/site/Kpis";
+import { Diagnostic } from "@/components/site/Diagnostic";
+import { Checklist } from "@/components/site/Checklist";
+import { Sources } from "@/components/site/Sources";
+import { Footer } from "@/components/site/Footer";
+import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "IA × Content Marketing — La Boîte à Outils du Marketeur" },
+      {
+        name: "description",
+        content:
+          "Framework décisionnel pour arbitrer entre IA et expertise humaine en content marketing. Guide opérationnel issu d'une recherche doctorale.",
+      },
+      { property: "og:title", content: "IA × Content Marketing — La Boîte à Outils du Marketeur" },
+      {
+        property: "og:description",
+        content:
+          "Matrice, arbre décisionnel, KPIs, auto-diagnostic et checklist pour piloter l'IA dans votre stratégie de contenu.",
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+function Index() {
+  useReveal();
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-paper text-ink">
+      <Nav />
+      <main>
+        <Hero />
+        <Matrix />
+        <DecisionTree />
+        <Kpis />
+        <Diagnostic />
+        <Checklist />
+        <Sources />
+      </main>
+      <Footer />
     </div>
   );
-}
-
-function Index() {
-  return <PlaceholderIndex />;
 }
