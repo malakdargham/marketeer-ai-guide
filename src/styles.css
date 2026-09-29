@@ -114,4 +114,9 @@
     opacity: 1;
     animation: none;
   }
+  .bar-ai-fill,
+  .bar-human-fill {
+    animation: none;
+    transform: none;
+  }
 }
