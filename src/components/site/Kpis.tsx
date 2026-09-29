@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Zap,
   Timer,
@@ -177,9 +177,28 @@ const catColor: Record<Cat, string> = {
 
 const FILTERS: ("Tous" | Cat)[] = ["Tous", "Efficience", "Qualité", "Business"];
 
+const slug = (t: string) =>
+  t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
 export function Kpis() {
   const [filter, setFilter] = useState<"Tous" | Cat>("Tous");
   const [open, setOpen] = useState<string | null>(null);
+  useEffect(() => {
+    const h = (e: Event) => {
+      const t = (e as CustomEvent<string>).detail;
+      setFilter("Tous");
+      setOpen(t);
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          const el = document.getElementById(`kpi-${slug(t)}`);
+          const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          el?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+        }),
+      );
+    };
+    window.addEventListener("open-kpi", h);
+    return () => window.removeEventListener("open-kpi", h);
+  }, []);
   const list = filter === "Tous" ? KPIS : KPIS.filter((k) => k.cat === filter);
 
   return (
@@ -214,7 +233,8 @@ export function Kpis() {
             return (
               <article
                 key={k.title}
-                className={`bg-card border rounded-2xl p-6 transition-all duration-300 cursor-pointer ${
+                id={`kpi-${slug(k.title)}`}
+                className={`scroll-mt-28 bg-card border rounded-2xl p-6 transition-all duration-300 cursor-pointer ${
                   isOpen ? "border-ink/40" : "border-line hover:border-ink/30 hover:-translate-y-0.5"
                 }`}
                 onClick={() => setOpen(isOpen ? null : k.title)}
