@@ -37,7 +37,7 @@ export function Hero() {
           dans votre stratégie de contenu.
         </p>
 
-        <div className="mt-16 font-mono text-[11px] uppercase tracking-[0.2em] text-paper/55">
+        <div className="mt-16 font-mono text-[11px] uppercase tracking-[0.2em] text-paper/85">
           Malak · Doctorat IA &amp; Content Marketing · USMS Beni Mellal · 2026
         </div>
       </div>

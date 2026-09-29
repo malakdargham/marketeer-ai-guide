@@ -25,6 +25,8 @@ export const Route = createFileRoute("/")({
         content:
           "Matrice, arbre décisionnel, KPIs, auto-diagnostic et checklist pour piloter l'IA dans votre stratégie de contenu.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Index,

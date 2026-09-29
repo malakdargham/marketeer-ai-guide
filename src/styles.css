@@ -2,8 +2,6 @@
 @source "../src";
 @import "tw-animate-css";
 
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -64,7 +62,7 @@
   --secondary: #efece4;
   --secondary-foreground: #1a1a2e;
   --muted: #efece4;
-  --muted-foreground: #6b6b7b;
+  --muted-foreground: #595967;
   --accent: #c45d3e;
   --accent-foreground: #ffffff;
   --destructive: #c45d3e;
@@ -105,3 +103,11 @@
 .bounce-soft { animation: bounce-soft 2s ease-in-out infinite; }
 .aurora-1 { animation: aurora 18s ease-in-out infinite; }
 .aurora-2 { animation: aurora 22s ease-in-out infinite reverse; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.in-view {
+    opacity: 1;
+    animation: none;
+  }
+}
