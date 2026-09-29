@@ -33,7 +33,7 @@ type Kpi = {
   warning?: string;
 };
 
-const KPIS: Kpi[] = [
+export const KPIS: Kpi[] = [
   {
     icon: Zap,
     title: "Content Velocity",

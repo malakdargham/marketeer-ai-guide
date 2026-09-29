@@ -12,7 +12,7 @@ type Tab = {
   kpis: string[];
 };
 
-const TABS: Tab[] = [
+export const TABS: Tab[] = [
   {
     id: "ideation",
     label: "Idéation",
