@@ -17,7 +17,7 @@ async function downloadPdf(score: number, values: number[], weakest: number[]) {
   doc.setFont("times", "normal"); doc.setFontSize(26); doc.setTextColor(...ink);
   doc.text("Votre niveau de maturité IA", 20, 36);
   doc.setFontSize(48); doc.text(`${score}`, 20, 60);
-  doc.setFontSize(16); doc.setTextColor(...muted); doc.text("/100", 20 + doc.getTextWidth(`${score}`) * 3 + 2, 60);
+  const w = doc.getTextWidth(`${score}`); doc.setFontSize(16); doc.setTextColor(...muted); doc.text("/100", 20 + w + 2, 60);
   doc.setFontSize(24); doc.setTextColor(...teal); doc.text(lvl.name, 190, 58, { align: "right" });
   // level bar
   const bx = 20, bw = 170, by = 70;
