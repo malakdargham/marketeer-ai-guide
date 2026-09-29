@@ -48,6 +48,7 @@ function Index() {
         <Diagnostic />
         <Checklist />
         <Sources />
+        <About />
       </main>
       <Footer />
     </div>
