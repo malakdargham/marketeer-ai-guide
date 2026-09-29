@@ -1,5 +1,8 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { SectionTitle } from "./SectionTitle";
+
+const STORAGE_KEY = "marketeer-checklist-progress";
 
 const PHASES = [
   {
@@ -48,6 +51,31 @@ const PHASES = [
 export function Checklist() {
   const allItems = useMemo(() => PHASES.flatMap((p, pi) => p.items.map((_, ii) => `${pi}-${ii}`)), []);
   const [checked, setChecked] = useState<Set<string>>(new Set());
+  const [storageReady, setStorageReady] = useState(false);
+
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed: unknown = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          const validItems = parsed.filter(
+            (item): item is string => typeof item === "string" && allItems.includes(item),
+          );
+          setChecked(new Set(validItems));
+        }
+      }
+    } catch {
+      window.localStorage.removeItem(STORAGE_KEY);
+    } finally {
+      setStorageReady(true);
+    }
+  }, [allItems]);
+
+  useEffect(() => {
+    if (!storageReady) return;
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify([...checked]));
+  }, [checked, storageReady]);
 
   const toggle = (k: string) => {
     const next = new Set(checked);
@@ -114,9 +142,21 @@ export function Checklist() {
           </div>
 
           <div className="mt-10 pt-6 border-t border-line">
-            <div className="flex items-center justify-between font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground mb-2">
+            <div className="flex items-center justify-between gap-4 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground mb-2">
               <span>Progression</span>
-              <span className="text-ink">{pct}%</span>
+              <div className="flex items-center gap-3">
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setChecked(new Set())}
+                  disabled={checked.size === 0}
+                  className="h-auto px-1 py-0 font-mono text-xs normal-case text-muted-foreground shadow-none hover:bg-transparent hover:text-ink"
+                >
+                  Réinitialiser
+                </Button>
+                <span className="text-ink">{pct}%</span>
+              </div>
             </div>
             <div className="h-2 rounded-full bg-secondary overflow-hidden">
               <div
