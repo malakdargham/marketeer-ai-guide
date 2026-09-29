@@ -1,7 +1,6 @@
 export function Hero() {
   return (
     <section
-      id="contexte"
       className="relative min-h-screen flex flex-col justify-center overflow-hidden text-paper"
       style={{ background: "linear-gradient(160deg, #1a1a2e 0%, #2a2548 60%, #3a3352 100%)" }}
     >
@@ -36,6 +35,21 @@ export function Hero() {
           Framework décisionnel pour arbitrer entre intelligence artificielle et expertise humaine
           dans votre stratégie de contenu.
         </p>
+
+        <div className="mt-10 flex flex-wrap items-center gap-4">
+          <a
+            href="#diagnostic"
+            className="inline-flex items-center px-6 py-3 rounded-full bg-terracotta text-white font-mono text-sm uppercase tracking-[0.12em] hover:bg-terracotta-light hover:text-ink transition-colors"
+          >
+            Faire l'auto-diagnostic
+          </a>
+          <a
+            href="#matrice"
+            className="inline-flex items-center px-6 py-3 rounded-full border border-paper/40 text-paper font-mono text-sm uppercase tracking-[0.12em] hover:bg-paper/10 transition-colors"
+          >
+            Explorer la matrice
+          </a>
+        </div>
 
         <div className="mt-16 font-mono text-[11px] uppercase tracking-[0.2em] text-paper/85">
           Malak · Doctorat IA &amp; Content Marketing · USMS Beni Mellal · 2026
