@@ -8,6 +8,7 @@ import { Kpis } from "@/components/site/Kpis";
 import { Diagnostic } from "@/components/site/Diagnostic";
 import { Checklist } from "@/components/site/Checklist";
 import { Sources } from "@/components/site/Sources";
+import { About } from "@/components/site/About";
 import { Footer } from "@/components/site/Footer";
 import { useReveal } from "@/hooks/use-reveal";
 
@@ -47,6 +48,7 @@ function Index() {
         <Diagnostic />
         <Checklist />
         <Sources />
+        <About />
       </main>
       <Footer />
     </div>
