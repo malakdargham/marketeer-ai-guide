@@ -126,8 +126,11 @@
     animation: none;
   }
   .bar-ai-fill,
-  .bar-human-fill {
+  .bar-human-fill,
+  .menu-panel,
+  .menu-item {
     animation: none;
+    opacity: 1;
     transform: none;
   }
 }
