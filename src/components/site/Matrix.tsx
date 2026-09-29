@@ -21,7 +21,7 @@ export const TABS: Tab[] = [
     whyRef: "réf. : Huang & Rust (2021) — à compléter",
     aiItems: ["Génération de sujets via tendances", "Analyse de gaps sémantiques", "Clustering de mots-clés", "Calendrier éditorial automatisé"],
     human: ["Alignement vision stratégique/marque", "Priorisation éditoriale", "Pertinence culturelle/contextuelle", "Arbitrage éthique"],
-    kpis: ["Taux d'adoption des sujets", "Time-to-publish", "Volume de contenu/mois"],
+    kpis: ["Content Velocity", "Time-to-Publish", "Taux de Révision"],
   },
   {
     id: "redaction",
@@ -31,7 +31,7 @@ export const TABS: Tab[] = [
     whyRef: "réf. : à compléter",
     aiItems: ["Premiers jets / outlines", "Variantes titres / meta", "Reformulation multi-format", "Traduction de base"],
     human: ["Voix de marque / ton distinctif", "Storytelling émotionnel", "Thought leadership", "Fact-checking / relecture finale"],
-    kpis: ["Temps de rédaction/article", "Score lisibilité", "Taux engagement", "Taux détection IA"],
+    kpis: ["Time-to-Publish", "Score de qualité éditoriale", "Taux d'Engagement", "Taux de Détection IA"],
   },
   {
     id: "seo",
@@ -41,7 +41,7 @@ export const TABS: Tab[] = [
     whyRef: "réf. : à compléter",
     aiItems: ["Audit technique SEO", "Recherche mots-clés / intention", "Optimisation on-page", "Scheduling multi-canal"],
     human: ["Link building / relations presse", "Arbitrage SEO vs UX lecteur", "Choix canaux stratégiques"],
-    kpis: ["Positions SERP", "Trafic organique", "CTR", "Domain Authority"],
+    kpis: ["Part de Voix Organique", "Taux de Conversion Contenu", "Content Reuse Rate"],
   },
   {
     id: "analytics",
@@ -51,7 +51,7 @@ export const TABS: Tab[] = [
     whyRef: "réf. : Davenport et al. (2020) — à compléter",
     aiItems: ["Collecte / nettoyage données", "Segmentation prédictive", "Détection anomalies", "Dashboards automatisés"],
     human: ["Interprétation stratégique", "Décisions de pivot / budget", "Communication aux stakeholders"],
-    kpis: ["Précision prédictions", "Temps d'analyse gagné", "ROI actions data-driven"],
+    kpis: ["Taux d'Automation", "Coût par Contenu", "ROI Content Marketing"],
   },
   {
     id: "social",
@@ -61,7 +61,7 @@ export const TABS: Tab[] = [
     whyRef: "réf. : à compléter",
     aiItems: ["Social listening / veille", "Génération visuels / posts", "Programmation / A/B testing", "Analyse sentiments"],
     human: ["Community management", "Gestion de crise", "Collaborations influenceurs", "Ton / humour communauté"],
-    kpis: ["Engagement rate", "Reach organique", "Sentiment score", "Temps de réponse"],
+    kpis: ["Taux d'Engagement", "Content Velocity", "Content Reuse Rate", "Score de qualité éditoriale"],
   },
   {
     id: "email",
@@ -71,7 +71,7 @@ export const TABS: Tab[] = [
     whyRef: "réf. : à compléter",
     aiItems: ["Segmentation dynamique / envoi prédictif", "Personnalisation objets / contenus", "Scénarios automation", "A/B testing continu"],
     human: ["Stratégie séquençage / storytelling", "Emails à fort enjeu", "Conformité RGPD"],
-    kpis: ["Open rate", "Click-through rate", "Conversion rate", "Unsubscribe rate"],
+    kpis: ["Taux d'Engagement", "Taux de Conversion Contenu", "ROI Content Marketing", "Taux d'Automation"],
   },
 ];
 
@@ -246,12 +246,15 @@ export function Matrix() {
             </div>
             <div className="flex flex-wrap gap-2">
               {tab.kpis.map((k) => (
-                <span
+                <button
                   key={k}
-                  className="font-mono text-xs px-2.5 py-1 rounded-md bg-card border border-line"
+                  type="button"
+                  onClick={() => window.dispatchEvent(new CustomEvent("open-kpi", { detail: k }))}
+                  className="font-mono text-xs px-2.5 py-1 rounded-md bg-card border border-line hover:border-ink hover:text-ink transition-colors"
+                  aria-label={`Voir le KPI ${k}`}
                 >
-                  {k}
-                </span>
+                  {k} ↓
+                </button>
               ))}
             </div>
           </div>
