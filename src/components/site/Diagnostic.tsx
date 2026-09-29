@@ -276,7 +276,9 @@ export function Diagnostic() {
                     </div>
                   ))}
                 </div>
+                )}
               </div>
+
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <button
