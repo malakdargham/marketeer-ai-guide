@@ -29,7 +29,7 @@ export function Nav() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-paper/80 border-b border-line">
+    <header className="no-print sticky top-0 z-50 backdrop-blur-md bg-paper/80 border-b border-line">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-14 flex items-center justify-between gap-6">
         <a href="#contexte" className="font-serif text-xl tracking-tight whitespace-nowrap">
           IA <span className="text-terracotta">×</span> Content
@@ -50,6 +50,13 @@ export function Nav() {
             </li>
           ))}
         </ul>
+        <button
+          type="button"
+          onClick={() => window.print()}
+          className="hidden lg:inline-flex text-[12px] font-mono px-3 py-1.5 rounded-full border border-line text-muted-foreground hover:text-ink hover:border-ink transition-colors whitespace-nowrap"
+        >
+          Télécharger le guide (PDF)
+        </button>
         <a
           href="#diagnostic"
           className="md:hidden text-xs font-mono px-3 py-1.5 rounded-full bg-ink text-paper"

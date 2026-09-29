@@ -10,6 +10,7 @@ import { Checklist } from "@/components/site/Checklist";
 import { Sources } from "@/components/site/Sources";
 import { About } from "@/components/site/About";
 import { Footer } from "@/components/site/Footer";
+import { PrintGuide } from "@/components/site/PrintGuide";
 import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
@@ -39,7 +40,7 @@ function Index() {
   return (
     <div className="min-h-screen bg-paper text-ink">
       <Nav />
-      <main>
+      <main className="screen-only">
         <Hero />
         <Contexte />
         <Matrix />
@@ -50,7 +51,8 @@ function Index() {
         <Sources />
         <About />
       </main>
-      <Footer />
+      <div className="screen-only"><Footer /></div>
+      <PrintGuide />
     </div>
   );
 }
