@@ -104,10 +104,19 @@
 .aurora-1 { animation: aurora 18s ease-in-out infinite; }
 .aurora-2 { animation: aurora 22s ease-in-out infinite reverse; }
 
+@keyframes bar-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.bar-ai-fill { transform-origin: left center; animation: bar-grow 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+.bar-human-fill { transform-origin: right center; animation: bar-grow 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .reveal.in-view {
     opacity: 1;
     animation: none;
+  }
+  .bar-ai-fill,
+  .bar-human-fill {
+    animation: none;
+    transform: none;
   }
 }
