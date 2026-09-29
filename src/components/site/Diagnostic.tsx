@@ -242,19 +242,26 @@ export function Diagnostic() {
 
               <p className="mt-6 text-[15px] leading-relaxed text-foreground/85">{lvl.reco}</p>
 
-              <div className="mt-8 h-72 sm:h-80">
+              <div className="mt-8 h-80 sm:h-[440px] radar-frame">
                 <ResponsiveContainer width="100%" height="100%">
-                  <RadarChart data={data} outerRadius="70%">
-                    <PolarGrid stroke="var(--line, #d8d4cc)" />
-                    <PolarAngleAxis dataKey="dim" tick={{ fill: "var(--ink)", fontSize: 11, fontFamily: "JetBrains Mono, monospace" }} />
+                  <RadarChart data={data} outerRadius="72%">
+                    <PolarGrid stroke="#c3beb1" strokeWidth={1} />
+                    <PolarAngleAxis dataKey="dim" tick={{ fill: "var(--ink)", fontSize: 14, fontFamily: "JetBrains Mono, monospace" }} />
                     <PolarRadiusAxis domain={[0, 3]} tickCount={4} tick={false} axisLine={false} />
-                    <Radar dataKey="value" stroke="var(--teal)" fill="var(--teal)" fillOpacity={0.25} strokeWidth={2} isAnimationActive />
+                    <Radar dataKey="value" stroke="var(--teal)" fill="var(--teal)" fillOpacity={0.25} strokeWidth={2.5} isAnimationActive />
                   </RadarChart>
                 </ResponsiveContainer>
               </div>
 
               <div className="mt-6">
                 <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-4">Vos 2 axes prioritaires</div>
+                {homogeneous ? (
+                  <div className="p-5 rounded-xl border border-teal/40 bg-teal/5">
+                    <p className="text-[15px] leading-relaxed text-foreground/90">
+                      Votre profil est homogène : progressez sur tous les axes en commençant par la validation humaine et la gouvernance.
+                    </p>
+                  </div>
+                ) : (
                 <div className="grid sm:grid-cols-2 gap-4">
                   {weakest.map((i) => (
                     <div key={i} className="p-5 rounded-xl border border-line bg-card">
