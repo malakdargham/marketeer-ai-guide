@@ -9,7 +9,7 @@ export function Footer() {
           Framework opérationnel issu d'une recherche doctorale · USMS Beni Mellal · 2026
         </p>
         <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-          © 2026 Malak — Tous droits réservés · Usage académique &amp; pédagogique
+          © 2026 Malak Dargham — Tous droits réservés · Usage académique &amp; pédagogique
         </p>
       </div>
     </footer>
