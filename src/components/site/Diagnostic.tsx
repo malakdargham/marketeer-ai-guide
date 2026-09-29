@@ -195,7 +195,14 @@ export function Diagnostic() {
             const values = answers.map((a) => a ?? 0);
             const lvl = getLevel(result.score);
             const lvlIdx = LEVELS.indexOf(lvl);
-            const weakest = values.map((v, i) => [v, i]).sort((a, b) => a[0] - b[0]).slice(0, 2).map((x) => x[1]);
+            // Départage en cas d'égalité : Validation humaine > Gouvernance > Mesure > Formation > IA analytique > Adoption
+            const TIEBREAK = [2, 5, 3, 4, 1, 0];
+            const weakest = values
+              .map((v, i) => [v, i] as const)
+              .sort((a, b) => a[0] - b[0] || TIEBREAK.indexOf(a[1]) - TIEBREAK.indexOf(b[1]))
+              .slice(0, 2)
+              .map((x) => x[1]);
+            const homogeneous = new Set(values).size === 1;
             const data = DIMENSIONS.map((d, i) => ({ dim: d.name, value: values[i] }));
             return (
             <div
