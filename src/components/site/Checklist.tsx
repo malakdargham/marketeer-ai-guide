@@ -4,7 +4,7 @@ import { SectionTitle } from "./SectionTitle";
 
 const STORAGE_KEY = "marketeer-checklist-progress";
 
-const PHASES = [
+export const PHASES = [
   {
     title: "Phase 1 — Diagnostic",
     sub: "Sem. 1-2",

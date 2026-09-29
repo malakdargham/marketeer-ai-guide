@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SectionTitle } from "./SectionTitle";
 
-const STEPS = [
+export const STEPS = [
   {
     q: "La tâche est-elle répétitive et à haut volume ?",
     d: "Identifiez les flux à fort débit où chaque minute économisée compte.",
@@ -41,7 +41,7 @@ const STEPS = [
   },
 ];
 
-const RESULTS = [
+export const RESULTS = [
   {
     mode: "IA en lead",
     color: "teal",

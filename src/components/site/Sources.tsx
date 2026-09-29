@@ -11,7 +11,7 @@ type Ref = {
   doi?: string;
 };
 
-const REFS: Ref[] = [
+export const REFS: Ref[] = [
   {
     type: "Académique",
     apa: (
@@ -101,7 +101,7 @@ const REFS: Ref[] = [
   },
 ];
 
-const SITE_CITATION =
+export const SITE_CITATION =
   "Dargham, M. (2026). IA × Content Marketing — La boîte à outils du marketeur : framework décisionnel pour arbitrer entre intelligence artificielle et expertise humaine. https://marketeer-ai-guide.lovable.app";
 
 const FILTERS: ("Toutes" | RefType)[] = ["Toutes", "Académique", "Sectoriel"];

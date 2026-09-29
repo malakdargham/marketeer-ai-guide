@@ -120,3 +120,35 @@
     transform: none;
   }
 }
+
+/* ---------- Version imprimable ---------- */
+.print-guide { display: none; }
+@media print {
+  @page { margin: 16mm 14mm; }
+  html, body { background: #fff !important; color: #1a1a2e !important; }
+  .no-print, .screen-only, header.sticky { display: none !important; }
+  *, *::before, *::after { animation: none !important; transition: none !important; box-shadow: none !important; }
+  .reveal { opacity: 1 !important; }
+  .print-guide { display: block; font-family: "DM Sans", sans-serif; font-size: 10.5pt; line-height: 1.45; }
+  .print-guide h1 { font-family: "Instrument Serif", serif; font-size: 28pt; line-height: 1.1; margin: 0 0 8pt; }
+  .print-guide h2 { font-family: "Instrument Serif", serif; font-size: 20pt; margin: 0 0 10pt; border-bottom: 1px solid #d8d4cc; padding-bottom: 4pt; }
+  .print-guide h3 { font-weight: 600; font-size: 12pt; margin: 6pt 0 4pt; }
+  .print-guide h4 { font-family: "JetBrains Mono", monospace; font-size: 8pt; text-transform: uppercase; letter-spacing: .08em; margin: 0 0 3pt; color: #2a6f6f; }
+  .print-guide .pg-cols > div:last-child h4 { color: #c45d3e; }
+  .print-guide ul, .print-guide ol { margin: 0; padding-left: 14pt; }
+  .print-guide .pg-check { list-style: none; padding-left: 0; }
+  .pg-cover { margin-bottom: 18pt; padding-bottom: 12pt; border-bottom: 2px solid #1a1a2e; }
+  .pg-kicker, .pg-meta, .pg-tag, .pg-formula { font-family: "JetBrains Mono", monospace; font-size: 8.5pt; color: #595967; }
+  .pg-tag { border: 1px solid #d8d4cc; border-radius: 999px; padding: 0 5pt; margin-left: 4pt; }
+  .pg-formula { background: #f7f5f0; padding: 3pt 6pt; border-radius: 4pt; color: #1a1a2e; }
+  .pg-block { break-inside: avoid; margin-bottom: 10pt; }
+  .pg-small { font-size: 9.5pt; color: #33333f; margin: 2pt 0; }
+  .pg-warn { color: #c45d3e; }
+  .pg-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; margin: 4pt 0; }
+  .pg-bar { height: 6pt; background: #c45d3e; border-radius: 3pt; overflow: hidden; margin: 2pt 0 6pt;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .pg-bar span { display: block; height: 100%; background: #2a6f6f; }
+  .pg-formula, .pg-tag { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .pg-break { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
